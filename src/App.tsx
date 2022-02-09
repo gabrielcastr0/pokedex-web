@@ -1,27 +1,30 @@
-import React from "react";
+import { useEffect, useState } from "react";
 
-import logo from "./logo.svg";
-import "./App.css";
+import api from "./services/api";
+import { PokedexTypes } from "./types/PokedexTypes";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export function App() {
+  const [offset, setOffset] = useState<number>(0);
+  const [count, setCount] = useState<number>(0);
+  const [pokedex, setPokedex] = useState<PokedexTypes[]>([]);
+
+  const displayPokemons = pokedex.map((pokedex) => {
+    return (
+      <div>
+        <h1>{pokedex.name}</h1>
+      </div>
+    );
+  });
+
+  const loadPokemons = async (offset: number | undefined) => {
+    const pokemonList = await api.getPokemons(offset);
+    setPokedex(pokemonList.results);
+    setCount(pokemonList.count);
+  };
+
+  useEffect(() => {
+    loadPokemons(offset);
+  }, [offset]);
+
+  return <div>{displayPokemons}</div>;
 }
-
-export default App;
