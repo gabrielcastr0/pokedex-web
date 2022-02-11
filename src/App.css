@@ -1,5 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
 
 *{
+  margin: auto;
   font-family: 'Roboto', sans-serif;
+}
+
+body{
+  background: url("https://i.pinimg.com/236x/b1/e1/a2/b1e1a2135daa7376fc13dcb32e89682f.jpg");
+  min-height: 100vh;
+  position: relative;
+}
+
+html::-webkit-scrollbar{
+  width: 0.5rem;
+}
+
+html::-webkit-scrollbar-thumb{
+  background: #eee;
 }

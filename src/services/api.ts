@@ -1,18 +1,19 @@
 import axios from "axios";
 
-export const api = {
-  getPokemons: async (offset: number | undefined) => {
-    const request = axios.create({
-      baseURL: "https://pokeapi.co/api/v2/",
-      params: {
-        limit: 10,
-        offset,
-      },
-    });
+export const pokemonApi = axios.create({
+  baseURL: "https://pokeapi.co/api/v2",
+});
 
-    const req = await request(`/pokemon`);
-    return req.data;
-  },
-};
+// export const api = {
+//   // getPokemons: async () => {
+//   //   const request = axios.create({
+//   //     baseURL: "https://pokeapi.co/api/v2",
+//   //     params: {
+//   //       limit: 10,
+//   //     },
+//   //   });
 
-export default api;
+//   //   const req = await request(`/pokemon`);
+//   //   return req.data;
+//   // },
+// };

@@ -6,4 +6,13 @@ export default styled(Pagination)`
   justify-content: center;
   align-items: center;
   margin-top: 30px;
+
+  button {
+    background: red;
+    color: #fff;
+
+    &:hover {
+      background: #000;
+    }
+  }
 `;

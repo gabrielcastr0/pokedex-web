@@ -1,15 +1,18 @@
-import Card from "./styled";
+import * as S from "./styled";
 
 type Props = {
   name: string;
+  image: any;
 };
 
-export function CardComponent({ name }: Props) {
+export function CardComponent({ name, image }: Props) {
   return (
-    <div>
-      <Card>
-        <p>{name}</p>
-      </Card>
-    </div>
+    <S.StyledCard>
+      <S.StyledCardMedia image={image} />
+
+      <S.StyledCardContent>
+        <S.StyledTypography>{name}</S.StyledTypography>
+      </S.StyledCardContent>
+    </S.StyledCard>
   );
 }

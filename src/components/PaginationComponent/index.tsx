@@ -8,14 +8,13 @@ type Props = {
 
 export function PaginationComponent({ count, page, clickFn }: Props) {
   return (
-    <div>
-      <Pagination
-        shape="rounded"
-        count={count}
-        page={page}
-        onChange={clickFn}
-        color="primary"
-      />
-    </div>
+    <Pagination
+      variant="outlined"
+      shape="rounded"
+      count={count}
+      page={page}
+      onChange={clickFn}
+      color="secondary"
+    />
   );
 }
