@@ -1,4 +1,6 @@
 import Grid from "@mui/material/Grid";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -25,16 +27,9 @@ export const BodyArea = styled.div`
 export const TitleSection = styled.div`
   display: flex;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.8);
   padding: 10px;
   border-radius: 5px;
   text-align: center;
-
-  h1 {
-    color: #000;
-    font-weight: normal;
-    text-transform: uppercase;
-  }
 `;
 
 export const CardArea = styled.div`
@@ -48,4 +43,12 @@ export const CardArea = styled.div`
   @media screen and (max-width: 768px) {
     margin-bottom: 230px;
   }
+`;
+
+export const StyledTypography = styled(Typography)`
+  color: #fff;
+`;
+
+export const StyledTextField = styled(TextField)`
+  color: #fff !important;
 `;

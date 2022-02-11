@@ -3,7 +3,7 @@ import {
   FetchAllPokemonResponse,
   SmallPokemon,
   Pokemon,
-} from "../interfaces/fetchAllPokemonsResponde";
+} from "../interfaces/fetchAllPokemonsResponse";
 import { pokemonApi } from "../services/api";
 
 export const fetchAllPokemons = async (): Promise<Pokemon[]> => {

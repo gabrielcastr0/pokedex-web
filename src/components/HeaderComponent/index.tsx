@@ -6,7 +6,7 @@ export function HeaderComponent() {
   return (
     <S.StyledAppBar position="static" color="transparent">
       <Container maxWidth="xl">
-        <S.StyledToolbar disableGutters>
+        <S.StyledToolbar>
           <S.StyledTypography variant="h4" noWrap sx={{ mr: 2 }}>
             PokéDex
           </S.StyledTypography>
