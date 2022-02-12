@@ -1,9 +1,8 @@
-import Button from "@mui/material/Button";
-import ButtonGroup from "@mui/material/ButtonGroup";
 import Grid from "@mui/material/Grid";
 import { useState } from "react";
 
 import { CardComponent } from "../../components/CardComponent";
+import { PaginationComponent } from "../../components/PaginationComponent";
 import { usePokemon } from "../../hooks/usePokemon";
 import { Pokemon } from "../../interfaces/fetchAllPokemonsResponse";
 import * as S from "./styled";
@@ -41,12 +40,12 @@ export function PokemonsList() {
 
   const onSearchChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     setCurrentPage(0);
-    setSearch(target.value);
+    setSearch(target.value.toLowerCase());
   };
 
   const displayPokemons = filteredPokemons().map(({ id, name, pic }) => {
     return (
-      <Grid item xs={3}>
+      <Grid item xs={2} style={{ marginTop: "15px" }}>
         <CardComponent
           name={`${id}. ${toFirstCharUppercase(name)}`}
           image={pic}
@@ -63,25 +62,18 @@ export function PokemonsList() {
         </S.StyledTypography>
       </S.TitleSection>
 
-      <ButtonGroup>
-        <Button variant="contained" onClick={previousPage}>
-          Anterior
-        </Button>
-        <S.StyledTextField
-          label="Buscar pokémon..."
-          variant="filled"
-          type="text"
-          value={search}
-          onChange={onSearchChange}
+      <div style={{ marginTop: "15px" }}>
+        <PaginationComponent
+          previousPage={previousPage}
+          nextPage={nextPage}
+          search={search}
+          onSearchChange={onSearchChange}
         />
-        <Button variant="contained" onClick={nextPage}>
-          Próximo
-        </Button>
-      </ButtonGroup>
+      </div>
 
       {isLoading && <S.StyledTypography>Carregando...</S.StyledTypography>}
 
-      <S.StyledGrid container spacing={2}>
+      <S.StyledGrid container spacing={2} columns={{ md: 10, xs: 2, sm: 4 }}>
         {displayPokemons}
       </S.StyledGrid>
     </S.BodyArea>

@@ -2,7 +2,7 @@ import * as S from "./styled";
 
 type Props = {
   name: string;
-  image: any;
+  image: string;
 };
 
 export function CardComponent({ name, image }: Props) {
