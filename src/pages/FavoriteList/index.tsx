@@ -23,7 +23,9 @@ export function FavoriteList() {
       return favorite.slice(currentPage, currentPage + 10);
     }
 
-    const filtered = favorite.filter((poke: any) => poke.name.includes(search));
+    const filtered = favorite.filter((poke: { name: string }) =>
+      poke.name.includes(search)
+    );
     return filtered.slice(currentPage, currentPage + 5);
   };
 
@@ -71,7 +73,7 @@ export function FavoriteList() {
     <S.BodyArea>
       <S.OptionsSection>
         <Link to="/">
-          <S.StyledTypography variant="h6">Total</S.StyledTypography>
+          <S.StyledTypography variant="h6">Todos</S.StyledTypography>
         </Link>
         <S.StyledTypography variant="h6">|</S.StyledTypography>
         <Link to="/favorites">

@@ -3,10 +3,10 @@ import ButtonGroup from "@mui/material/ButtonGroup";
 import * as S from "./styled";
 
 type Props = {
-  previousPage: (x: any) => void;
-  nextPage: (x: any) => void;
-  onSearchChange: (x: any) => void;
-  search: any;
+  previousPage: () => void;
+  nextPage: () => void;
+  onSearchChange: (arg: React.ChangeEvent<HTMLInputElement>) => void;
+  search: string;
 };
 
 export function PaginationComponent({

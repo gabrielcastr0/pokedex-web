@@ -13,7 +13,7 @@ import * as S from "./styled";
 
 export function PokemonsList() {
   const dispatch = useDispatch();
-  const favorite = useAppSelector((state) => state.favorite);
+  const favorite = useAppSelector((state) => state.favorite.favorites);
   const { isLoading, pokemons } = usePokemon();
   const [currentPage, setCurrentPage] = useState(0);
   const [search, setSearch] = useState("");
@@ -22,6 +22,7 @@ export function PokemonsList() {
     if (search.length === 0) {
       return pokemons.slice(currentPage, currentPage + 10);
     }
+
     const filtered = pokemons.filter((poke) => poke.name.includes(search));
     return filtered.slice(currentPage, currentPage + 5);
   };
@@ -70,7 +71,7 @@ export function PokemonsList() {
     <S.BodyArea>
       <S.OptionsSection>
         <Link to="/">
-          <S.StyledTypography variant="h6">Total</S.StyledTypography>
+          <S.StyledTypography variant="h6">Todos</S.StyledTypography>
         </Link>
         <S.StyledTypography variant="h6">|</S.StyledTypography>
         <Link to="/favorites">
