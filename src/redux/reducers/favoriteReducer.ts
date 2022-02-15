@@ -2,7 +2,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 interface IState {
-  name: string;
   favorites: Array<any>;
 }
 
@@ -14,15 +13,10 @@ interface IAction {
 export const slice = createSlice({
   name: "favorite",
   initialState: {
-    name: "pokemonDefault",
     favorites: [],
   },
 
   reducers: {
-    setName: (state: IState, action: IAction) => {
-      state.name = action.payload;
-    },
-
     setFavorites: (state: IState, action: IAction) => {
       const favoriteList = [...state.favorites];
       const { id } = action.payload;
@@ -39,5 +33,5 @@ export const slice = createSlice({
   },
 });
 
-export const { setName, setFavorites } = slice.actions;
+export const { setFavorites } = slice.actions;
 export default slice.reducer;

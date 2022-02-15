@@ -4,12 +4,13 @@ import Container from "@mui/material/Container";
 
 import { HeaderComponent } from "./components/HeaderComponent";
 import { PokemonsList } from "./pages/PokemonsList";
+import { MainRoutes } from "./routes/MainRoutes";
 
 export function App() {
   return (
-    <>
+    <main>
       <HeaderComponent />
-      <PokemonsList />
-    </>
+      <MainRoutes />
+    </main>
   );
 }

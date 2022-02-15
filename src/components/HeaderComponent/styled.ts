@@ -12,6 +12,10 @@ export const StyledToolbar = styled(Toolbar)`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  a {
+    text-decoration: none;
+  }
 `;
 
 export const StyledTypography = styled(Typography, { name: "Typography" })({

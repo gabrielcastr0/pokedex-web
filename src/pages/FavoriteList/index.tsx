@@ -11,18 +11,19 @@ import { Pokemon } from "../../interfaces/fetchAllPokemonsResponse";
 import { setFavorites } from "../../redux/reducers/favoriteReducer";
 import * as S from "./styled";
 
-export function PokemonsList() {
+export function FavoriteList() {
   const dispatch = useDispatch();
-  const favorite = useAppSelector((state) => state.favorite);
+  const favorite = useAppSelector((state) => state.favorite.favorites);
   const { isLoading, pokemons } = usePokemon();
   const [currentPage, setCurrentPage] = useState(0);
   const [search, setSearch] = useState("");
 
   const filteredPokemons = (): Pokemon[] => {
     if (search.length === 0) {
-      return pokemons.slice(currentPage, currentPage + 10);
+      return favorite.slice(currentPage, currentPage + 10);
     }
-    const filtered = pokemons.filter((poke) => poke.name.includes(search));
+
+    const filtered = favorite.filter((poke: any) => poke.name.includes(search));
     return filtered.slice(currentPage, currentPage + 5);
   };
 
@@ -89,9 +90,15 @@ export function PokemonsList() {
 
       {isLoading && <S.StyledTypography>Carregando...</S.StyledTypography>}
 
-      <S.StyledGrid container spacing={2} columns={{ md: 10, xs: 2, sm: 4 }}>
-        {displayPokemons}
-      </S.StyledGrid>
+      {displayPokemons.length > 0 && (
+        <S.StyledGrid container spacing={2} columns={{ md: 10, xs: 2, sm: 4 }}>
+          {displayPokemons}
+        </S.StyledGrid>
+      )}
+
+      {displayPokemons.length <= 0 && (
+        <S.StyledTypography>Não há favoritos!</S.StyledTypography>
+      )}
     </S.BodyArea>
   );
 }
