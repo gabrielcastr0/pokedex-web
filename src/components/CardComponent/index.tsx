@@ -1,9 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import StarIcon from "@mui/icons-material/Star";
 import CardHeader from "@mui/material/CardHeader";
 import IconButton from "@mui/material/IconButton";
-import { useState } from "react";
 
 import * as S from "./styled";
 
@@ -11,28 +9,25 @@ type Props = {
   name: string;
   image: string;
   clickFn: (...x: any) => any;
+  show: boolean;
 };
 
-export function CardComponent({ name, image, clickFn }: Props) {
-  const [favorite, setFavorite] = useState(false);
-
+export function CardComponent({ name, image, clickFn, show }: Props) {
   const handleClickBtn = (x: any) => {
-    setFavorite(!favorite);
     clickFn(x);
   };
 
   return (
-    <S.StyledCard>
-      <CardHeader
-        action={
-          <IconButton>
-            {favorite && <FavoriteIcon />}
-            {!favorite && (
-              <FavoriteBorderOutlinedIcon onClick={handleClickBtn} />
-            )}
-          </IconButton>
-        }
-      />
+    <S.StyledCard show={show}>
+      {show && (
+        <CardHeader
+          action={
+            <IconButton>
+              <StarIcon onClick={handleClickBtn} />
+            </IconButton>
+          }
+        />
+      )}
       <S.StyledCardMedia image={image} />
 
       <S.StyledCardContent>

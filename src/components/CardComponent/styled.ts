@@ -4,7 +4,11 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/system";
 
-export const StyledCard = styled(Card, { name: "Card" })({
+type Props = {
+  show: boolean;
+};
+
+export const StyledCard = styled(Card, { name: "Card" })<Props>({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",

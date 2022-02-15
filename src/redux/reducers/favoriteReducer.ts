@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable no-param-reassign */
 import { createSlice } from "@reduxjs/toolkit";
 
@@ -25,9 +26,10 @@ export const slice = createSlice({
       console.log(index);
 
       if (index > -1) {
-        console.log("Já foi registrado!");
+        alert("Este pokémon já está nos favoritos!");
       } else {
         state.favorites = [...state.favorites, action.payload];
+        alert("Favoritado com sucesso!");
       }
     },
   },

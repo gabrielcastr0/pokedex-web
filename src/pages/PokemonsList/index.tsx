@@ -60,6 +60,7 @@ export function PokemonsList() {
     return (
       <Grid item xs={2} style={{ marginTop: "15px" }} key={id}>
         <CardComponent
+          show
           name={`${id}. ${toFirstCharUppercase(name)}`}
           image={pic}
           clickFn={() => toggleFavAction(id, name, pic)}
