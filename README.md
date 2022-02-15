@@ -22,6 +22,12 @@ E por fim, execute o seguinte comando para rodar a aplicação: <br>
 yarn start
 ```
 
+### **Site**
+
+Link: https://pokedex-gc4str0.netlify.app/
+
+<img src="./banner.png" alt="Banner Pokédex" />
+
 ### **Features**
 
 - [X] Criar uma página que mostre os pokémons
@@ -39,6 +45,10 @@ yarn start
 - React Router Dom
 - Axios
 - TypeScript
+
+### **Deploy do Projeto**
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1b860e79-72e7-497d-a0db-78a6960f6cca/deploy-status)](https://app.netlify.com/sites/pokedex-gc4str0/deploys)
 ### **Autor**
 
  <img style="border-radius: 10px;" src="https://avatars.githubusercontent.com/u/45581257?v=4" width="100px;" alt=""/>
