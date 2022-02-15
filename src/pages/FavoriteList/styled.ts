@@ -1,54 +1,37 @@
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import styled from "styled-components";
+import { styled } from "@mui/system";
 
-export const Container = styled.div`
-  display: flex;
-  width: 100%;
-`;
+export const StyledContainer = styled(Container, { name: "Container" })({
+  padding: "35px",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  height: "100%",
+});
 
-export const StyledGrid = styled(Grid)`
-  padding-top: 20px;
-  padding-left: 50px;
-  padding-right: 50px;
-`;
+export const StyledGrid = styled(Grid, { name: "Grid" })({
+  paddingTop: "20px",
+  paddingLeft: "50px",
+  paddingRight: "50px",
+});
 
-export const BodyArea = styled.div`
-  padding: 35px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-`;
+export const StyledBox1 = styled(Box, { name: "Box1" })({
+  display: "flex",
+  justifyContent: "center",
+  padding: "10px",
+  gap: "25px",
+  borderRadius: "5px",
+  textAlign: "center",
 
-export const OptionsSection = styled.div`
-  display: flex;
-  justify-content: center;
-  padding: 10px;
-  gap: 25px;
-  border-radius: 5px;
-  text-align: center;
-
-  a {
-    text-decoration: none;
-  }
-`;
-
-export const CardArea = styled.div`
-  display: flex;
-  justify-content: center;
-  max-width: 1100px;
-  gap: 15px;
-  flex-wrap: wrap;
-  margin: 25px 0 150px 0;
-
-  @media screen and (max-width: 768px) {
-    margin-bottom: 230px;
-  }
-`;
+  a: {
+    textDecoration: "none",
+  },
+});
 
 export const StyledTypography = styled(Typography)`
   color: #fff;
@@ -57,3 +40,10 @@ export const StyledTypography = styled(Typography)`
 export const StyledTextField = styled(TextField)`
   color: #fff !important;
 `;
+
+export const StyledBox2 = styled(Box, { name: "Box2" })({
+  marginTop: "25px",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+});

@@ -7,8 +7,10 @@ import {
 import { pokemonApi } from "../services/api";
 
 export const fetchAllPokemons = async (): Promise<Pokemon[]> => {
+  const count = await pokemonApi.get<FetchAllPokemonResponse>(`/pokemon`);
+
   const resp = await pokemonApi.get<FetchAllPokemonResponse>(
-    "/pokemon?limit=1500"
+    `/pokemon?limit=${count.data.count}`
   );
 
   const smallPokemonList = resp.data.results;

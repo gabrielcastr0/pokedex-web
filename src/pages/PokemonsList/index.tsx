@@ -1,3 +1,4 @@
+import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -5,9 +6,9 @@ import { Link } from "react-router-dom";
 
 import { CardComponent } from "../../components/CardComponent";
 import { PaginationComponent } from "../../components/PaginationComponent";
-import { useAppSelector } from "../../hooks/useAppSelector";
-import { usePokemon } from "../../hooks/usePokemon";
 import { Pokemon } from "../../interfaces/fetchAllPokemonsResponse";
+import { useAppSelector } from "../../redux/hooks/useAppSelector";
+import { usePokemon } from "../../redux/hooks/usePokemon";
 import { setFavorites } from "../../redux/reducers/favoriteReducer";
 import * as S from "./styled";
 
@@ -68,8 +69,8 @@ export function PokemonsList() {
   });
 
   return (
-    <S.BodyArea>
-      <S.OptionsSection>
+    <S.StyledContainer>
+      <S.StyledBox1>
         <Link to="/">
           <S.StyledTypography variant="h6">Todos</S.StyledTypography>
         </Link>
@@ -77,22 +78,26 @@ export function PokemonsList() {
         <Link to="/favorites">
           <S.StyledTypography variant="h6">Favoritos</S.StyledTypography>
         </Link>
-      </S.OptionsSection>
+      </S.StyledBox1>
 
-      <div style={{ marginTop: "15px" }}>
+      <Box mt={2}>
         <PaginationComponent
           previousPage={previousPage}
           nextPage={nextPage}
           search={search}
           onSearchChange={onSearchChange}
         />
-      </div>
+      </Box>
 
-      {isLoading && <S.StyledTypography>Carregando...</S.StyledTypography>}
+      {isLoading && (
+        <S.StyledBox2>
+          <S.StyledTypography variant="h6">Carregando...</S.StyledTypography>
+        </S.StyledBox2>
+      )}
 
       <S.StyledGrid container spacing={2} columns={{ md: 10, xs: 2, sm: 4 }}>
         {displayPokemons}
       </S.StyledGrid>
-    </S.BodyArea>
+    </S.StyledContainer>
   );
 }

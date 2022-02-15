@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
-import { fetchAllPokemons } from "../helpers/fetchAllPokemons";
-import { Pokemon } from "../interfaces/fetchAllPokemonsResponse";
+import { fetchAllPokemons } from "../../helpers/fetchAllPokemons";
+import { Pokemon } from "../../interfaces/fetchAllPokemonsResponse";
 
 export const usePokemon = () => {
   const [isLoading, setIsLoading] = useState(true);
