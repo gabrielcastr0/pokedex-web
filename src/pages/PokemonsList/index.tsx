@@ -7,14 +7,12 @@ import { Link } from "react-router-dom";
 import { CardComponent } from "../../components/CardComponent";
 import { PaginationComponent } from "../../components/PaginationComponent";
 import { Pokemon } from "../../interfaces/fetchAllPokemonsResponse";
-import { useAppSelector } from "../../redux/hooks/useAppSelector";
 import { usePokemon } from "../../redux/hooks/usePokemon";
 import { setFavorites } from "../../redux/reducers/favoriteReducer";
 import * as S from "./styled";
 
 export function PokemonsList() {
   const dispatch = useDispatch();
-  const favorite = useAppSelector((state) => state.favorite.favorites);
   const { isLoading, pokemons } = usePokemon();
   const [currentPage, setCurrentPage] = useState(0);
   const [search, setSearch] = useState("");
@@ -53,7 +51,6 @@ export function PokemonsList() {
 
   const toggleFavAction = (id: string, name: string, pic: string) => {
     dispatch(setFavorites({ id, name, pic }));
-    console.log(favorite);
   };
 
   const displayPokemons = filteredPokemons().map(({ id, name, pic }) => {

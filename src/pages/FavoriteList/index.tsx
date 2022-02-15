@@ -9,10 +9,7 @@ import { PaginationComponent } from "../../components/PaginationComponent";
 import { Pokemon } from "../../interfaces/fetchAllPokemonsResponse";
 import { useAppSelector } from "../../redux/hooks/useAppSelector";
 import { usePokemon } from "../../redux/hooks/usePokemon";
-import {
-  setFavorites,
-  deleteFavorite,
-} from "../../redux/reducers/favoriteReducer";
+import { deleteFavorite } from "../../redux/reducers/favoriteReducer";
 import * as S from "./styled";
 
 export function FavoriteList() {
@@ -58,7 +55,6 @@ export function FavoriteList() {
 
   const toggleFavAction = (id: string) => {
     dispatch(deleteFavorite(id));
-    // console.log(favorite);
   };
 
   const displayPokemons = filteredPokemons().map(({ id, name, pic }) => {

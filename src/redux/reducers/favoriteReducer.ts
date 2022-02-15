@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-alert */
 /* eslint-disable no-param-reassign */
 import { createSlice } from "@reduxjs/toolkit";
@@ -33,8 +34,6 @@ export const slice = createSlice({
     },
 
     deleteFavorite: (state: IState, action: IAction) => {
-      console.log(`action.payload = ${action.payload}`);
-
       state.favorites.splice(
         state.favorites.findIndex((arrow) => arrow.id === action.payload),
         1
