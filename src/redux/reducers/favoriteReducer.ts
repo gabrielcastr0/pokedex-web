@@ -23,7 +23,6 @@ export const slice = createSlice({
       const { id } = action.payload;
 
       const index = favoriteList.findIndex((item) => item.id === id);
-      console.log(index);
 
       if (index > -1) {
         alert("Este pokémon já está nos favoritos!");
@@ -32,8 +31,17 @@ export const slice = createSlice({
         alert("Favoritado com sucesso!");
       }
     },
+
+    deleteFavorite: (state: IState, action: IAction) => {
+      console.log(`action.payload = ${action.payload}`);
+
+      state.favorites.splice(
+        state.favorites.findIndex((arrow) => arrow.id === action.payload),
+        1
+      );
+    },
   },
 });
 
-export const { setFavorites } = slice.actions;
+export const { setFavorites, deleteFavorite } = slice.actions;
 export default slice.reducer;

@@ -1,7 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import StarIcon from "@mui/icons-material/Star";
 import CardHeader from "@mui/material/CardHeader";
-import IconButton from "@mui/material/IconButton";
 
 import * as S from "./styled";
 
@@ -9,25 +7,48 @@ type Props = {
   name: string;
   image: string;
   clickFn: (...x: any) => any;
-  show: boolean;
+  showFavorite?: boolean;
+  showDisfavor?: boolean;
+} & typeof defaultProps;
+
+const defaultProps = {
+  showFavorite: false,
+  showDisfavor: false,
 };
 
-export function CardComponent({ name, image, clickFn, show }: Props) {
+export function CardComponent({
+  name,
+  image,
+  clickFn,
+  showFavorite,
+  showDisfavor,
+}: Props) {
   const handleClickBtn = (x: any) => {
     clickFn(x);
   };
 
   return (
-    <S.StyledCard show={show}>
-      {show && (
+    <S.StyledCard showFavorite={showFavorite} showDisfavor={showDisfavor}>
+      {showFavorite && (
         <CardHeader
           action={
-            <IconButton>
-              <StarIcon onClick={handleClickBtn} />
-            </IconButton>
+            <S.StyledButton onClick={handleClickBtn}>
+              <S.StyledTypography1>Favoritar</S.StyledTypography1>
+            </S.StyledButton>
           }
         />
       )}
+
+      {showDisfavor && (
+        <CardHeader
+          action={
+            <S.StyledButton1 onClick={handleClickBtn}>
+              <S.StyledTypography1>Desfavoritar</S.StyledTypography1>
+            </S.StyledButton1>
+          }
+        />
+      )}
+
       <S.StyledCardMedia image={image} />
 
       <S.StyledCardContent>
@@ -36,3 +57,5 @@ export function CardComponent({ name, image, clickFn, show }: Props) {
     </S.StyledCard>
   );
 }
+
+CardComponent.defaultProps = defaultProps;

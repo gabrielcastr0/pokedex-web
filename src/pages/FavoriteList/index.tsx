@@ -9,7 +9,10 @@ import { PaginationComponent } from "../../components/PaginationComponent";
 import { Pokemon } from "../../interfaces/fetchAllPokemonsResponse";
 import { useAppSelector } from "../../redux/hooks/useAppSelector";
 import { usePokemon } from "../../redux/hooks/usePokemon";
-import { setFavorites } from "../../redux/reducers/favoriteReducer";
+import {
+  setFavorites,
+  deleteFavorite,
+} from "../../redux/reducers/favoriteReducer";
 import * as S from "./styled";
 
 export function FavoriteList() {
@@ -53,19 +56,19 @@ export function FavoriteList() {
     setSearch(target.value.toLowerCase());
   };
 
-  const toggleFavAction = (id: string, name: string, pic: string) => {
-    dispatch(setFavorites({ id, name, pic }));
-    console.log(favorite);
+  const toggleFavAction = (id: string) => {
+    dispatch(deleteFavorite(id));
+    // console.log(favorite);
   };
 
   const displayPokemons = filteredPokemons().map(({ id, name, pic }) => {
     return (
       <Grid item xs={2} style={{ marginTop: "15px" }} key={id}>
         <CardComponent
-          show={false}
+          showDisfavor
           name={`${id}. ${toFirstCharUppercase(name)}`}
           image={pic}
-          clickFn={() => toggleFavAction(id, name, pic)}
+          clickFn={() => toggleFavAction(id)}
         />
       </Grid>
     );
