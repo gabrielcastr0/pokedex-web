@@ -1,13 +1,18 @@
 import Grid from "@mui/material/Grid";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 import { CardComponent } from "../../components/CardComponent";
 import { PaginationComponent } from "../../components/PaginationComponent";
+import { useAppSelector } from "../../hooks/useAppSelector";
 import { usePokemon } from "../../hooks/usePokemon";
 import { Pokemon } from "../../interfaces/fetchAllPokemonsResponse";
+import { setName, setFavorites } from "../../redux/reducers/favoriteReducer";
 import * as S from "./styled";
 
 export function PokemonsList() {
+  const dispatch = useDispatch();
+  const favorite = useAppSelector((state) => state.favorite);
   const { isLoading, pokemons } = usePokemon();
   const [currentPage, setCurrentPage] = useState(0);
   const [search, setSearch] = useState("");
@@ -42,13 +47,18 @@ export function PokemonsList() {
     setCurrentPage(0);
     setSearch(target.value.toLowerCase());
   };
+  const toggleFavAction = (id: string, name: string, pic: string) => {
+    dispatch(setFavorites({ id, name, pic }));
+    console.log(favorite);
+  };
 
   const displayPokemons = filteredPokemons().map(({ id, name, pic }) => {
     return (
-      <Grid item xs={2} style={{ marginTop: "15px" }}>
+      <Grid item xs={2} style={{ marginTop: "15px" }} key={id}>
         <CardComponent
           name={`${id}. ${toFirstCharUppercase(name)}`}
           image={pic}
+          clickFn={() => toggleFavAction(id, name, pic)}
         />
       </Grid>
     );
